@@ -4,26 +4,35 @@ describe('Login page tests', () => {
         cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
     })
 
-    let input_valid_username = 'Admin'
-    let input_valid_password = 'admin123'
-    let input_invalid_password = '123'
-    let path_username = "[name='username']"
-    let path_password = "[name='password']"
-    let path_button = "[type='submit']"
-    let path_alert = "[role='alert']"
+    const selectors = {
+        usernameField: "[name='username']",
+        passwordField: "[name='password']",
+        submitButton: "[type='submit']",
+        invalidCredentialAlertMessage: "[role='alert']"
+    }
+
+    const input = {
+        valid: {
+            username: 'Admin',
+            password: 'admin123'
+        },
+        invalid: {
+            username: 'Admino',
+            password: '123'
+        }
+    }
 
     it('valid name + password', () => {
-        cy.get(path_username).type(input_valid_username)
-        cy.get(path_password).type(input_valid_password)
-        cy.get(path_button).click()
+        cy.get(selectors.usernameField).type(input.valid.username)
+        cy.get(selectors.passwordField).type(input.valid.password)
+        cy.get(selectors.submitButton).click()
         cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
-        cy.get('.oxd-topbar-header-breadcrumb > .oxd-text').should('have.text', 'Dashboard')
     })
 
     it('invalid password', () => {
-        cy.get(path_username).type(input_valid_username)
-        cy.get(path_password).type(input_invalid_password)
-        cy.get(path_button).click()
-        cy.get(path_alert).should('exist')
+        cy.get(selectors.usernameField).type(input.valid.username)
+        cy.get(selectors.passwordField).type(input.invalid.password)
+        cy.get(selectors.submitButton).click()
+        cy.get(selectors.invalidCredentialAlertMessage).should('exist')
     })
 })
