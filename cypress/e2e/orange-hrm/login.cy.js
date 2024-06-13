@@ -8,6 +8,7 @@ describe('Login page tests', () => {
         usernameField: "[name='username']",
         passwordField: "[name='password']",
         submitButton: "[type='submit']",
+        dashboardGrid:".orangehrm-dashboard-grid",
         invalidCredentialAlertMessage: "[role='alert']"
     }
 
@@ -27,6 +28,7 @@ describe('Login page tests', () => {
         cy.get(selectors.passwordField).type(input.valid.password)
         cy.get(selectors.submitButton).click()
         cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
+        cy.get(selectors.dashboardGrid).should('exist')
     })
 
     it('invalid password', () => {
