@@ -1,7 +1,6 @@
 import _userData from '../../fixtures/userData.json'
 
 describe('Login page tests', () => {
-    // happens before each test
     beforeEach(() => {
         cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
     })
@@ -10,11 +9,11 @@ describe('Login page tests', () => {
         usernameField: "[name='username']",
         passwordField: "[name='password']",
         submitButton: "[type='submit']",
-        dashboardGrid:".orangehrm-dashboard-grid",
+        dashboardGrid: ".orangehrm-dashboard-grid",
         invalidCredentialAlertMessage: "[role='alert']"
     }
 
-    it('valid name + password', () => {
+    it('valid username + password', () => {
         cy.get(selectors.usernameField).type(_userData.valid.username)
         cy.get(selectors.passwordField).type(_userData.valid.password)
         cy.get(selectors.submitButton).click()
@@ -23,8 +22,8 @@ describe('Login page tests', () => {
     })
 
     it('invalid password', () => {
-        cy.get(selectors.usernameField).type(_userData.invalid_password.username)
-        cy.get(selectors.passwordField).type(_userData.invalid_password.password)
+        cy.get(selectors.usernameField).type(_userData.valid.username)
+        cy.get(selectors.passwordField).type(_userData.invalid.password)
         cy.get(selectors.submitButton).click()
         cy.get(selectors.invalidCredentialAlertMessage).should('exist')
     })
