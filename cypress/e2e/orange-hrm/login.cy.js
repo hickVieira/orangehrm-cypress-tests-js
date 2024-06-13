@@ -1,3 +1,5 @@
+import _userData from '../../fixtures/userData.json'
+
 describe('Login page tests', () => {
     // happens before each test
     beforeEach(() => {
@@ -12,28 +14,17 @@ describe('Login page tests', () => {
         invalidCredentialAlertMessage: "[role='alert']"
     }
 
-    const input = {
-        valid: {
-            username: 'Admin',
-            password: 'admin123'
-        },
-        invalid: {
-            username: 'Admino',
-            password: '123'
-        }
-    }
-
     it('valid name + password', () => {
-        cy.get(selectors.usernameField).type(input.valid.username)
-        cy.get(selectors.passwordField).type(input.valid.password)
+        cy.get(selectors.usernameField).type(_userData.valid.username)
+        cy.get(selectors.passwordField).type(_userData.valid.password)
         cy.get(selectors.submitButton).click()
         cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
         cy.get(selectors.dashboardGrid).should('exist')
     })
 
     it('invalid password', () => {
-        cy.get(selectors.usernameField).type(input.valid.username)
-        cy.get(selectors.passwordField).type(input.invalid.password)
+        cy.get(selectors.usernameField).type(_userData.invalid_password.username)
+        cy.get(selectors.passwordField).type(_userData.invalid_password.password)
         cy.get(selectors.submitButton).click()
         cy.get(selectors.invalidCredentialAlertMessage).should('exist')
     })
