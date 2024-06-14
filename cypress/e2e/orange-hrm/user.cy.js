@@ -13,7 +13,7 @@ describe('User tests', () => {
         invalidCredentialAlertMessage: "[role='alert']"
     }
 
-    it('login with valid username + password', () => {
+    it('Login with valid username + password', () => {
         cy.get(selectors.usernameField).type(_userData.valid.username)
         cy.get(selectors.passwordField).type(_userData.valid.password)
         cy.get(selectors.submitButton).click()
@@ -21,29 +21,29 @@ describe('User tests', () => {
         cy.get(selectors.dashboardGrid).should('exist')
     })
 
-    it('login with invalid password', () => {
+    it('Login with invalid password', () => {
         cy.get(selectors.usernameField).type(_userData.valid.username)
         cy.get(selectors.passwordField).type(_userData.invalid.password)
         cy.get(selectors.submitButton).click()
         cy.get(selectors.invalidCredentialAlertMessage).should('exist')
     })
 
-    it('login with invalid username', () => {
+    it('Login with invalid username', () => {
         cy.get(selectors.usernameField).type(_userData.invalid.username)
         cy.get(selectors.passwordField).type(_userData.valid.password)
         cy.get(selectors.submitButton).click()
         cy.get(selectors.invalidCredentialAlertMessage).should('exist')
     })
 
-    it.only('login + change My Info', () => {
+    it('Login > My Info > Personal Details', () => {
         cy.get(selectors.usernameField).type(_userData.valid.username)
         cy.get(selectors.passwordField).type(_userData.valid.password)
         cy.get(selectors.submitButton).click()
 
-        cy.get("[href='/web/index.php/pim/viewMyDetails']").click()
-        cy.get("[name='firstName']").clear().type("Antonio")
-        cy.get("[name='middleName']").clear().type("Pereira")
-        cy.get("[name='lastName']").clear().type("da Silva")
+        cy.get("[href='/web/index.php/pim/viewMyDetails']").click() // get to my info
+        cy.get("[name='firstName']").clear().type("Antonio") // first name
+        cy.get("[name='middleName']").clear().type("Pereira") // middle name
+        cy.get("[name='lastName']").clear().type("da Silva") // last name
         cy.get(".oxd-grid-item .oxd-input").eq(3).clear().type("Tonho") // nickname
 
         cy.get(".oxd-grid-item .oxd-input").eq(4).clear().type("12345") // employee id
