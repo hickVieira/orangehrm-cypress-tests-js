@@ -1,0 +1,9 @@
+{
+    "links": {
+        "Login": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+        "Dashboard": "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index"
+    },
+    "menu_selectors": {
+        "MyInfoButton": "[href='/web/index.php/pim/viewMyDetails']"
+    }
+}
