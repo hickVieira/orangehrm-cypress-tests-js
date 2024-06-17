@@ -14,36 +14,35 @@ npx cypress open
 npx cypress run
 ```
 
+### Status
 1. [**OrangeHRM**](https://opensource-demo.orangehrmlive.com/)
     - [x] Login Page
         - [x] valid login
             - [x] verify invalid login message not showing up
         - [x] invalid login
             - [x] verify invalid login message showing up
-    - [ ] Menu Column
-        - [ ] My Info
-            - [x] Personal Details
-                - [x] first name
-                - [x] middle name
-                - [x] last name
-                - [x] nick name
-                - [x] employee id
-                - [x] other id
-                - [x] drivers license number
-                - [x] license expiry date
-                - [x] SSN number
-                - [x] SIN number
-                - [x] nationality
-                - [x] marital status
-                - [x] date of birth
-                - [x] gender
-                - [x] millitary service
-                - [x] smoker
-                - [x] save button
-                - [x] blood type
-                - [x] test_field
-                - [x] save button
-                - [ ] attachments
+    - [ ] My Info > Personal Details
+        - [x] first name
+        - [x] middle name
+        - [x] last name
+        - [x] nick name
+        - [x] employee id
+        - [x] other id
+        - [x] drivers license number
+        - [x] license expiry date
+        - [x] SSN number
+        - [x] SIN number
+        - [x] nationality
+        - [x] marital status
+        - [x] date of birth
+        - [x] gender
+        - [x] millitary service
+        - [x] smoker
+        - [x] save button
+        - [x] blood type
+        - [x] test_field
+        - [x] save button
+        - [ ] attachments
 
 
 ### Notes
@@ -56,8 +55,7 @@ npx cypress run
     - almost total lack of html parameter tagging
         - can't find fields by name or anything
             - need to rely on bad methods like, hierarchy child order, or string match
-                - results in flaky tests
-                - only works on english
+                - results in flaky language-dependent tests
 
 <!--
 ### rant
