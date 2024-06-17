@@ -1,34 +1,18 @@
 import _SiteData from './SiteData.json'
 import _UserData from './UserData.json'
 import LoginPage from './LoginPage.js'
-import DashboardPage from './DashboardPage.js'
 import MyInfoPage from './MyInfoPage.js'
 
 const _loginPage = new LoginPage()
-const _dashboardPage = new DashboardPage()
 const _myInfoPage = new MyInfoPage()
 
-describe('User tests', () => {
+describe('User pages tests', () => {
     beforeEach(() => {
         cy.visit(_SiteData.links.Login)
     })
 
-    it('Login with valid username + password', () => {
-        _loginPage.login(_UserData.valid.username, _UserData.valid.password)
-    })
-
-    it('Login with invalid password', () => {
-        _loginPage.login(_UserData.valid.username, _UserData.invalid.password)
-        cy.get(_loginPage.selectors.invalidCredentialAlertMessage).should('exist')
-    })
-
-    it('Login with invalid username', () => {
-        _loginPage.login(_UserData.invalid.username, _UserData.valid.password)
-        cy.get(_loginPage.selectors.invalidCredentialAlertMessage).should('exist')
-    })
-
     it('Login > Dashboard > My Info > Personal Details', () => {
-        _loginPage.login(_UserData.valid.username, _UserData.valid.password)
+        _loginPage.loginSuccess(_UserData.valid.username, _UserData.valid.password)
 
         cy.get(_SiteData.menu_selectors.MyInfoButton).click() // go to my-info page
 
