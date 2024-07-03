@@ -1,9 +1,8 @@
-# Cypress Automation Practice Project
-
-This repo is where I keep some test automation practice projects using cypress.
+## OrangeHRM Tests
+First project using cypress for test automation. Target site is [OrangeHRM](https://opensource-demo.orangehrmlive.com/). This project uses javascript because I did not know at the time that you could use typescript.
 
 ### Running
-```bash
+```shell
 # download/update node modules
 npm install
 
@@ -14,48 +13,55 @@ npx cypress open
 npx cypress run
 ```
 
-### Status
-1. [**OrangeHRM**](https://opensource-demo.orangehrmlive.com/)
-    - [x] Login Page
-        - [x] valid login
-            - [x] verify invalid login message not showing up
-        - [x] invalid login
-            - [x] verify invalid login message showing up
-    - [ ] My Info > Personal Details
-        - [x] first name
-        - [x] middle name
-        - [x] last name
-        - [x] nick name
-        - [x] employee id
-        - [x] other id
-        - [x] drivers license number
-        - [x] license expiry date
-        - [x] SSN number
-        - [x] SIN number
-        - [x] nationality
-        - [x] marital status
-        - [x] date of birth
-        - [x] gender
-        - [x] millitary service
-        - [x] smoker
-        - [x] save button
-        - [x] blood type
-        - [x] test_field
-        - [x] save button
-        - [ ] attachments
-
+### Coverage
+- [x] Login Page
+    - [x] valid login
+        - [x] verify invalid login message not showing up
+    - [x] invalid login
+        - [x] verify invalid login message showing up
+- [ ] My Info > Personal Details
+    - [x] first name
+    - [x] middle name
+    - [x] last name
+    - [x] nick name
+    - [x] employee id
+    - [x] other id
+    - [x] drivers license number
+    - [x] license expiry date
+    - [x] SSN number
+    - [x] SIN number
+    - [x] nationality
+    - [x] marital status
+    - [x] date of birth
+    - [x] gender
+    - [x] millitary service
+    - [x] smoker
+    - [x] save button
+    - [x] blood type
+    - [x] test_field
+    - [x] save button
+    - [ ] attachments
 
 ### Notes
-- OrangeHRM keeps changing its front-end
+- OrangeHRM keeps changing its front-end layout every 5 min or so
     - some tests break due to that
         - not sure wtf is going on
             - maybe there are toggles somewhere that activate certain fields in different areas
                 - this is qa hell
                 - good example of what NOT to do
-    - almost total lack of html parameter tagging
-        - can't find fields by name or anything
-            - need to rely on bad methods like, hierarchy child order, or string match
-                - results in flaky language-dependent tests
+    - almost total lack of html attribute tagging
+        - can't find fields by name or id or anything
+            - need to rely on bad methods like, hierarchy order, or string match
+                - results in flaky tests
+    - overall automating this site sucks
+- Some bad technical choices I made
+    - javascript instead of typescript
+        - inexistant intelisense
+        - no refactoring support
+        - no types
+        - awful overall
+    - use of json instead of static classes (pain to refactor)
+        - using json to store data was a bad idea
 
 <!--
 ### rant
